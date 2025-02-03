@@ -1,7 +1,0 @@
-Could not override 'trainer.offload_optimizer'.
-To append to your config use +trainer.offload_optimizer=true
-Key 'offload_optimizer' is not in struct
-    full_key: trainer.offload_optimizer
-    object_type=dict
-
-Set the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.

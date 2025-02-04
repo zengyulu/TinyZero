@@ -2,9 +2,12 @@
 
 export HYDRA_FULL_ERROR=1
 export N_GPUS=2
-export BASE_MODEL=/home/zengyu/Workspace/2_models/Qwen2/Qwen2.5-1.5B
-export DATA_DIR=/home/zengyu/Workspace/0_git/TinyZero/data/countdown
+export BASE_MODEL=/workspace/Qwen2.5-1.5B
+export DATA_DIR=/workspace/TinyZero/data/countdown
 export ROLLOUT_TP_SIZE=1
+
+wandb login e447ec43d0319f54f231ffd93512571cee4e2162
+
 
 python3 -m verl.trainer.main_ppo \
     data.train_files=$DATA_DIR/train.parquet \

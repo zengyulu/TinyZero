@@ -5,6 +5,7 @@ export N_GPUS=2
 export BASE_MODEL=/workspace/Qwen2.5-1.5B
 export DATA_DIR=/workspace/TinyZero/data/countdown
 export ROLLOUT_TP_SIZE=1
+export VLLM_ATTENTION_BACKEND=XFORMERS
 
 wandb login e447ec43d0319f54f231ffd93512571cee4e2162
 
@@ -36,5 +37,5 @@ python3 -m verl.trainer.main_ppo \
     trainer.save_freq=10 \
     trainer.test_freq=10 \
     trainer.project_name=TinyZero \
-    trainer.experiment_name=$EXPERIMENT_NAME \
+    trainer.experiment_name=local_countdown-qwen2.5-1.5b \
     trainer.total_epochs=15 2>&1 | tee verl_demo.log

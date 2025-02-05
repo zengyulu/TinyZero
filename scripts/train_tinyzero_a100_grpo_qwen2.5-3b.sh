@@ -5,6 +5,9 @@ export N_GPUS=2
 export BASE_MODEL=/workspace/Qwen2.5-3B
 export DATA_DIR=/workspace/TinyZero/data/countdown
 export ROLLOUT_TP_SIZE=1
+export VLLM_ATTENTION_BACKEND=XFORMERS
+
+wandb login e447ec43d0319f54f231ffd93512571cee4e2162
 
 python3 -m verl.trainer.main_ppo \
     algorithm.adv_estimator=grpo \

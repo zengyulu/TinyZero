@@ -2,7 +2,7 @@
 
 export HYDRA_FULL_ERROR=1
 export N_GPUS=2
-export BASE_MODEL=/workspace/Qwen2.5-7B-Instruct
+export BASE_MODEL=/workspace/Qwen2.5-7B
 export DATA_DIR=/workspace/TinyZero/data/countdown
 export ROLLOUT_TP_SIZE=2
 export VLLM_ATTENTION_BACKEND=XFORMERS
@@ -11,8 +11,8 @@ wandb login e447ec43d0319f54f231ffd93512571cee4e2162
 
 python3 -m verl.trainer.main_ppo \
   algorithm.adv_estimator=grpo \
-  data.train_files=$DATA_DIR/train_instruct.parquet \
-  data.val_files=$DATA_DIR/test_instruct.parquet \
+  data.train_files=$DATA_DIR/train.parquet \
+  data.val_files=$DATA_DIR/test.parquet \
   data.train_batch_size=256 \
   data.val_batch_size=1024 \
   data.max_prompt_length=256 \
@@ -46,5 +46,5 @@ python3 -m verl.trainer.main_ppo \
   trainer.save_freq=20 \
   trainer.test_freq=20 \
   trainer.project_name=TinyZero \
-  trainer.experiment_name=local_countdown-qwen2.5-1.5b \
+  trainer.experiment_name=local_countdown-qwen2.5-7b \
   trainer.total_epochs=15 2>&1 | tee verl_demo.log

@@ -2,7 +2,7 @@
 
 export HYDRA_FULL_ERROR=1
 export N_GPUS=2
-export BASE_MODEL=/workspace/Qwen2.5-Math-7B-Instruct
+export BASE_MODEL=/workspace/Qwen2.5-7B-Instruct
 export DATA_DIR=/workspace/TinyZero/data/countdown
 export ROLLOUT_TP_SIZE=2
 export VLLM_ATTENTION_BACKEND=XFORMERS

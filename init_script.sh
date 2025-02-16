@@ -23,4 +23,4 @@ pip install -e .
 
 pip install flash-attn --no-build-isolation wandb IPython matplotlib
 
-
+sh script/train_tinyzero_h200_ppo_qwen2.5_7b.sh

@@ -12,18 +12,15 @@ sh cuda_12.4.0_550.54.14_linux.run
 #pip install vllm==0.6.3
 pip install vllm==0.6.3 torch==2.4.0 torchaudio==2.4.0 --extra-index-url https://download.pytorch.org/whl/cu124
 
-mkdir /workspace/Qwen2.5-7B-Instruct
+mkdir /workspace/Qwen2.5-7B
 
-huggingface-cli download Qwen/Qwen2.5-7B-Instruct --local-dir /workspace/Qwen2.5-7B-Instruct --local-dir-use-symlinks False --resume-download
+huggingface-cli download Qwen/Qwen2.5-7B --local-dir /workspace/Qwen2.5-7B --local-dir-use-symlinks False --resume-download
 
 git clone https://github.com/zengyulu/TinyZero.git
 cd /workspace/TinyZero
 
-
 pip install -e .
 
-pip3 install flash-attn --no-build-isolation
-
-pip install wandb IPython matplotlib
+pip install flash-attn --no-build-isolation wandb IPython matplotlib
 
 

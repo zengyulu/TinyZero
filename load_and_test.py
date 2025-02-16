@@ -1,10 +1,12 @@
 from transformers import AutoModelForCausalLM, AutoTokenizer
+
 import torch
 
 torch.cuda.set_stream(torch.cuda.Stream())
 
 # 指定本地模型路径（替换为你的实际路径）
-model_path = "/home/zengyu/Workspace/2_models/countdown_trained"
+model_path = "/home/zengyu/Workspace/2_models/trained_models/countdown/20250215/global_step_120"
+#model_path = "/home/zengyu/Workspace/2_models/countdown_trained"
 #model_path = "/home/zengyu/Workspace/2_models/Qwen2/Qwen2.5-3B"
 ##model_path = "/home/zengyu/Workspace/2_models/deepseek/DeepSeek-R1-Distill-Qwen-32B"
 
@@ -27,7 +29,7 @@ model = AutoModelForCausalLM.from_pretrained(
     #quantization_config=bnb_config,
     trust_remote_code=True,
     device_map="auto",  # 自动分配设备（GPU/CPU）
-    torch_dtype=torch.float16  # 自动处理数据类型
+    torch_dtype='auto'#torch.float16  # 自动处理数据类型
 )
 
 # 验证设备分配
@@ -62,6 +64,6 @@ def generate_text(prompt, max_length=1024):
 
 # 使用示例
 if __name__ == "__main__":
-    prompt = "A conversation between User and Assistant. The user asks a question, and the Assistant solves it. The assistant first thinks about the reasoning process in the mind and then provides the user with the answer.\nUser: Using the numbers [87, 58, 13, 59], create an equation that equals 74. You can use basic arithmetic operations (+, -, *, /) and each number can only be used once. Show your work in <think> </think> tags. And return the final answer in <answer> </answer> tags, for example <answer> (1 + 2) / 3 </answer>.\nAssistant: Let me solve this step by step.\n<think>"
+    prompt = "A conversation between User and Assistant. The user asks a question, and the Assistant solves it. The assistant first thinks about the reasoning process in the mind and then provides the user with the answer.\nUser: Using the numbers [24, 94, 7, 15], create an equation that equals 91. You can use basic arithmetic operations (+, -, *, /) and each number can only be used once. Show your work in <think> </think> tags. And return the final answer in <answer> </answer> tags, for example <answer> (1 + 2) / 3 </answer>.\nAssistant: Let me solve this step by step.\n<think>"
     print("输入提示:", prompt)
     print("生成结果:", generate_text(prompt))

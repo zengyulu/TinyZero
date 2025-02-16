@@ -1,11 +1,11 @@
 #!/bin/bash
 
 export HYDRA_FULL_ERROR=1
-export N_GPUS=1
+export N_GPUS=1 # 需要2张H200
 export BASE_MODEL=/workspace/Qwen2.5-7B
 export DATA_DIR=/workspace/TinyZero/data/countdown
 export ROLLOUT_TP_SIZE=1  #7B 模型单卡可容纳，关闭张量并行减少通信开销，优先数据并行
-export VLLM_ATTENTION_BACKEND=FLASH_ATTENTION_2 # 使用FLASH ATTENTION v2
+export VLLM_ATTENTION_BACKEND=XFORMERS
 
 wandb login e447ec43d0319f54f231ffd93512571cee4e2162
 
